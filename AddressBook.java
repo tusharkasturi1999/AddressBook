@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class AddressBook {
 
-    private List<Contact> contacts = new ArrayList<Contact>();
+    private final List<Contact> contacts = new ArrayList<>();
 
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
     /**
      * This method is used to read contacts
@@ -101,7 +101,7 @@ public class AddressBook {
      */
 
     public int search(String firstName, String lastName) {
-        int i = 0;
+        int i;
         int len = this.contacts.size();
         for (i = 0; i < len; ++i) {
             if (this.contacts.get(i).getFirstName().equals(firstName) &&
@@ -131,9 +131,6 @@ public class AddressBook {
 
             if (option == 5)
                 break;
-/**
- * This is used to choose option
- */
 
             switch (option) {
                 case 1:
@@ -184,48 +181,26 @@ class Contact {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
-        return address;
-    }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getCity() {
-        return city;
-    }
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getState() {
-        return state;
     }
 
     public void setState(String state) {
         this.state = state;
     }
 
-    public String getZip() {
-        return zip;
-    }
-
     public void setZip(String zip) {
         this.zip = zip;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmailId() {
-        return emailId;
     }
 
     public void setEmailId(String emailId) {
