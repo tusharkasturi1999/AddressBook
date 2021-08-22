@@ -60,7 +60,7 @@ public class AddressBook {
     /**
      * This method is used to edit contacts
      */
-    /*
+
     public void editContact() {
         System.out.println("Enter FN");
         String firstName = sc.nextLine();
@@ -75,7 +75,7 @@ public class AddressBook {
             this.contacts.set(index, contact);
         }
     }
-    */
+
     /**
      * This method is to delete contacts
      */
@@ -94,14 +94,13 @@ public class AddressBook {
         }
     }
     */
-     /*
     /**
      * Method to search for a contact in the contact list
      * @param firstName first name of the contact
      * @param lastName last name of the contact
      * @return index of the contact to be searched, -1 if not found
      */
-    /*
+
     public int search(String firstName, String lastName) {
         int i = 0;
         int len = this.contacts.size();
@@ -117,7 +116,7 @@ public class AddressBook {
             return i;
         }
     }
-    */
+
 
 
     public static void main(String[] args) {
@@ -126,7 +125,7 @@ public class AddressBook {
 
         while (true) {
             System.out.println("Welcome to Address Book");
-            System.out.println("1 Add");//\n2 Edit\n3 Delete\n4 Print\n5 Exit");
+            System.out.println("1 Add\n2 Edit"); // \n3 Delete\n4 Print\n5 Exit);
             System.out.println("Enter option");
             int option = sc.nextInt();
             sc.nextLine();
@@ -142,7 +141,7 @@ public class AddressBook {
                     addressBook.addContact();
                     break;
                 case 2:
-                    // addressBook.editContact();
+                    addressBook.editContact();
                     break;
                 case 3:
                     // addressBook.deleteContact();
