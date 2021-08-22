@@ -79,7 +79,6 @@ public class AddressBook {
     /**
      * This method is to delete contacts
      */
-    /*
     public void deleteContact() {
         System.out.println("Enter FN");
         String firstName = sc.nextLine();
@@ -93,7 +92,7 @@ public class AddressBook {
             System.out.println("Contact Deleted");
         }
     }
-    */
+
     /**
      * Method to search for a contact in the contact list
      * @param firstName first name of the contact
@@ -125,7 +124,7 @@ public class AddressBook {
 
         while (true) {
             System.out.println("Welcome to Address Book");
-            System.out.println("1 Add\n2 Edit"); // \n3 Delete\n4 Print\n5 Exit);
+            System.out.println("1 Add\n2 Edit \n3 Delete\n4 Print\n5 Exit");
             System.out.println("Enter option");
             int option = sc.nextInt();
             sc.nextLine();
@@ -144,10 +143,10 @@ public class AddressBook {
                     addressBook.editContact();
                     break;
                 case 3:
-                    // addressBook.deleteContact();
+                     addressBook.deleteContact();
                     break;
                 case 4:
-                    // addressBook.printContacts();
+                     addressBook.printContacts();
                     break;
                 default:
                     System.out.println("Invalid Choice");
