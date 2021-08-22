@@ -51,12 +51,12 @@ public class AddressBook {
     /**
      * this method is used to add contacts
      */
-    /*
+
     public void addContact() {
         Contact contact = this.readContactDetails();
         this.contacts.add(contact);
     }
-    */
+
     /**
      * This method is used to edit contacts
      */
@@ -126,8 +126,8 @@ public class AddressBook {
 
         while (true) {
             System.out.println("Welcome to Address Book");
-            // System.out.println("1 Add\n2 Edit\n3 Delete\n4 Print\n5 Exit");
-            // System.out.println("Enter option");
+            System.out.println("1 Add");//\n2 Edit\n3 Delete\n4 Print\n5 Exit");
+            System.out.println("Enter option");
             int option = sc.nextInt();
             sc.nextLine();
 
@@ -139,7 +139,7 @@ public class AddressBook {
 
             switch (option) {
                 case 1:
-                    //addressBook.addContact();
+                    addressBook.addContact();
                     break;
                 case 2:
                     // addressBook.editContact();
