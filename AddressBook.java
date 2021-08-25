@@ -1,14 +1,93 @@
 package com.bridgelabz.addressbook;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBook {
-
-    private final List<Contact> contacts = new ArrayList<>();
-
+    private final Map<String, Addresses> dictionary = new HashMap<>();
     private static final Scanner sc = new Scanner(System.in);
+
+    public boolean createAddressBook(String name) {
+        if (dictionary.containsKey(name)) {
+            return true;
+        }
+        dictionary.put(name, new Addresses());
+        return true;
+    }
+
+    public void printAddressBooksNames() {
+        dictionary.keySet().forEach(System.out::println);
+    }
+
+    public Addresses getAddressBook(String name) {
+        return dictionary.get(name);
+    }
+
+    public boolean deleteAddressBook(String name) {
+        if (dictionary.containsKey(name)) {
+            dictionary.remove(name);
+            return true;
+        }
+        return false;
+    }
+
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("1 Print\n2 Create \n3 Select Existing\n4 Delete\n5 Exit");
+            int choice = sc.nextInt();
+            sc.nextLine();
+            if (choice == 5)
+                break;
+            AddressBook addressBook = new AddressBook();
+            switch (choice) {
+                case 1:
+                    addressBook.printAddressBooksNames();
+                    break;
+                case 2:
+                    System.out.println("Enter new Bookname");
+                    sc.nextLine();
+                    String bookName = sc.next();
+                    addressBook.createAddressBook(bookName);
+                    addressBook.printAddressBooksNames();
+                    break;
+                case 3:
+                    addressBook.printAddressBooksNames();
+                    System.out.println("Enter Bookname to select");
+                    bookName = sc.next();
+                    Addresses ad1 = addressBook.getAddressBook(bookName);
+                    ad1.driver();
+                    break;
+                case 4:
+                    System.out.println("Enter Bookname to delete");
+                    bookName = sc.next();
+                    addressBook.deleteAddressBook("book1");
+                    addressBook.printAddressBooksNames();
+                    break;
+
+//        addressBook.printAddressBooksNames();
+//        addressBook.createAddressBook("book1");
+//        addressBook.printAddressBooksNames();
+//        case 2:
+//        Addresses ad1 = addressBook.getAddressBook("book1");
+//        ad1.driver();
+//        break;
+//        addressBook.createAddressBook("book1");
+//        addressBook.createAddressBook("book2");
+//        addressBook.printAddressBooksNames();
+//        addressBook.deleteAddressBook("book1");
+//        addressBook.printAddressBooksNames();
+}}}
+
+class Addresses {
+
+
+    private List<Contact> contacts = null;
+
+    public Addresses() {
+        this.contacts = new ArrayList<>();
+    }
+
+    private  final Scanner sc = new Scanner(System.in);
 
     /**
      * This method is used to read contacts
@@ -117,10 +196,8 @@ public class AddressBook {
     }
 
 
-
-    public static void main(String[] args) {
-
-        AddressBook addressBook = new AddressBook();
+// Call this to do this
+    public void driver() {
 
         while (true) {
             System.out.println("Welcome to Address Book");
@@ -134,16 +211,16 @@ public class AddressBook {
 
             switch (option) {
                 case 1:
-                    addressBook.addContact();
+                    this.addContact();
                     break;
                 case 2:
-                    addressBook.editContact();
+                    this.editContact();
                     break;
                 case 3:
-                     addressBook.deleteContact();
+                    this.deleteContact();
                     break;
                 case 4:
-                     addressBook.printContacts();
+                    this.printContacts();
                     break;
                 default:
                     System.out.println("Invalid Choice");
@@ -230,4 +307,4 @@ class Contact {
                 + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", emailId=" + emailId + "]";
     }
 
-}
+}}
