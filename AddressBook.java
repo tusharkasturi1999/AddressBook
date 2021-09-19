@@ -89,13 +89,13 @@ public class AddressBook {
          * This method is used to read contacts
          *
          * @return returnscontact
+         * @param firstName
+         * @param lastName
          */
-        public Contact readContactDetails() {
+        public Contact readContactDetails(String firstName, String lastName) {
             Contact contact = new Contact();
-            System.out.println("Enter FN");
-            contact.setFirstName(sc.nextLine());
-            System.out.println("Enter LN");
-            contact.setLastName(sc.nextLine());
+            contact.setFirstName(firstName);
+            contact.setLastName(lastName);
             System.out.println("Enter Add");
             contact.setAddress(sc.nextLine());
             System.out.println("Enter City");
@@ -126,10 +126,12 @@ public class AddressBook {
 
         /**
          * this method is used to add contacts
+         * @param firstName
+         * @param lastName
          */
 
-        public void addContact() {
-            Contact contact = this.readContactDetails();
+        public void addContact(String firstName, String lastName) {
+            Contact contact = this.readContactDetails(firstName, lastName);
             this.contacts.add(contact);
         }
 
@@ -147,7 +149,7 @@ public class AddressBook {
                 System.out.println("Contact Not Found");
             } else {
                 System.out.println("Enter new Values");
-                Contact contact = this.readContactDetails();
+                Contact contact = this.readContactDetails(firstName, lastName);
                 this.contacts.set(index, contact);
             }
         }
@@ -209,8 +211,20 @@ public class AddressBook {
 
                 switch (option) {
                     case 1:
-                        this.addContact();
-                        break;
+                        System.out.println("Enter FN");
+                        String firstName = sc.nextLine();
+                        System.out.println("Enter LN");
+                        String lastName = sc.nextLine();
+                        int index = search(firstName, lastName);
+                        if(index == -1){
+                            this.addContact(firstName, lastName);
+                            break;
+                        }
+                        else
+                        {
+                            System.out.println("Entry Already exists");
+                            break;
+                        }
                     case 2:
                         this.editContact();
                         break;
